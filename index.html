@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NorthPoint Innovations</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2ede8;
+    --surface: #ebe5de;
+    --ink: #1a1510;
+    --ink-light: #6b5f54;
+    --accent: #00c8ff;
+    --accent2: #0088cc;
+    --border: #c8bfb5;
+    --white: #faf8f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .nav-logo em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  nav a {
+    color: var(--ink-light);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+  }
+
+  .hero-left {
+    position: relative;
+  }
+
+  .hero-issue {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-issue::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 .line-accent {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.85rem 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* HERO RIGHT — MASTHEAD */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid var(--ink);
+    background: var(--white);
+  }
+
+  .masthead-header {
+    background: var(--ink);
+    color: var(--white);
+    border-bottom: 2px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .masthead-item {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .masthead-item:last-child { border-bottom: none; }
+
+  .m-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .m-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .m-value.red { color: var(--accent); }
+  .m-value.blue { color: var(--accent2); }
+
+  /* TICKER */
+  .ticker {
+    background: var(--ink);
+    color: var(--white);
+    padding: 0.6rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  .ticker-sep { color: var(--accent); margin: 0 1.5rem; }
+
+  /* SECTIONS */
+  .section-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1rem;
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+
+  /* ABOUT */
+  .about-cols {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-body p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .about-body p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid var(--ink);
+  }
+
+  .sidebar-block {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-block:last-child { border-bottom: none; }
+
+  .sidebar-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--ink-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .sidebar-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .sidebar-desc {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  /* PROJECTS */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid var(--ink);
+  }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 80px 200px 1fr auto;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    transition: background 0.2s;
+  }
+
+  .project-row:last-child { border-bottom: none; }
+  .project-row:hover { background: var(--surface); }
+
+  .project-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    padding-top: 0.2rem;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.3rem;
+  }
+
+  .project-status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  .s-live { background: #1a1510; color: #f2ede8; }
+  .s-proto { background: var(--accent2); color: white; }
+  .s-ready { background: var(--accent); color: #1a1510; }
+  .s-dev { background: var(--border); color: var(--ink); }
+
+  .project-name-small {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-body p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    max-width: 580px;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--ink-light);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .project-arrow {
+    font-size: 1.5rem;
+    color: var(--border);
+    padding-top: 0.3rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .project-row:hover .project-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .contact-left p {
+    font-size: 1rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 2px solid var(--ink);
+  }
+
+  .fact-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .fact-row:last-child { border-bottom: none; }
+  .fact-key { color: var(--ink-light); }
+  .fact-val { color: var(--ink); font-weight: 500; }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    color: var(--ink);
+    padding: 0.8rem 1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--ink);
+  }
+
+  .form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .form-group select option {
+    background: var(--white);
+  }
+
+  .form-submit {
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+  }
+
+  .form-submit:hover { background: var(--accent); }
+
+  .form-note {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink);
+    text-align: center;
+    min-height: 1.2em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--white);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-logo em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .footer-copy {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: #6b6055;
+    letter-spacing: 0.05em;
+  }
+
+  /* DIVIDER */
+  .full-divider {
+    width: 100%;
+    height: 2px;
+    background: var(--ink);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .about-cols { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .project-row { grid-template-columns: 60px 1fr; }
+    .project-meta { display: none; }
+    .project-arrow { display: none; }
+    nav ul { display: none; }
+    .section-wrapper { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">North<em>Point</em> Innovations</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" style="margin-top:60px;">
+  <div class="ticker-inner">
+    NorthPoint Innovations<span class="ticker-sep">◆</span>
+    Security Systems Integration<span class="ticker-sep">◆</span>
+    Edge AI Surveillance<span class="ticker-sep">◆</span>
+    30 Years Field Experience<span class="ticker-sep">◆</span>
+    Michigan<span class="ticker-sep">◆</span>
+    Built Field-First<span class="ticker-sep">◆</span>
+    No Vendor Lock-in<span class="ticker-sep">◆</span>
+    Real Problems. Real Solutions.<span class="ticker-sep">◆</span>
+    NorthPoint Innovations<span class="ticker-sep">◆</span>
+    Security Systems Integration<span class="ticker-sep">◆</span>
+    Edge AI Surveillance<span class="ticker-sep">◆</span>
+    30 Years Field Experience<span class="ticker-sep">◆</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-issue">NorthPoint Innovations — Michigan</div>
+    <h1>Field<br>Tested.<br><span class="line-accent">Not</span><br>Theoretical.</h1>
+    <p class="hero-sub">30 years in security systems integration. I build practical technology solutions for real operational problems.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="masthead-header">
+      <span>NorthPoint Innovations</span>
+      <span>Portfolio 2025</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Founder</span>
+      <span class="m-value">Greg Kozma</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Experience</span>
+      <span class="m-value red">30+ Years</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Specialty</span>
+      <span class="m-value">Security & AI</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Architecture</span>
+      <span class="m-value blue">Edge First</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Active Projects</span>
+      <span class="m-value red">5</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Vendor Lock-in</span>
+      <span class="m-value">None</span>
+    </div>
+    <div class="masthead-item">
+      <span class="m-label">Location</span>
+      <span class="m-value">Michigan, USA</span>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- ABOUT -->
+<div class="section-wrapper" id="about">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-cols">
+    <div class="about-body fade-in">
+      <p>I'm <strong>Greg Kozma</strong>, founder of NorthPoint Innovations. With over 30 years in security systems integration, I've seen what fails in the field versus what works on paper.</p>
+      <p>Every product I build starts with a <strong>real operational problem</strong> I've personally experienced. Not a market gap identified from a spreadsheet — a problem I lived, understood, and decided to solve.</p>
+      <p>My approach is <strong>edge-first architecture</strong> — processing happens on-device, no unnecessary cloud dependencies, no per-seat licensing, no vendor roadmap controlling your technology. Systems that work the way people actually work.</p>
+      <p>NorthPoint Innovations is the umbrella for everything I build — from AI surveillance infrastructure to field support platforms to CAD tools built specifically for security installers who need to move fast in the field.</p>
+    </div>
+    <div class="about-sidebar fade-in">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Domain</div>
+        <div class="sidebar-value">30+</div>
+        <div class="sidebar-desc">Years in security systems integration</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Approach</div>
+        <div class="sidebar-value" style="color:var(--accent2)">Edge</div>
+        <div class="sidebar-desc">On-device processing. No cloud dependency required.</div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Philosophy</div>
+        <div class="sidebar-value" style="font-size:1rem; color:var(--ink)">Field First</div>
+        <div class="sidebar-desc">Built by someone who has done the work, not just designed around it.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- PROJECTS -->
+<div class="section-wrapper" id="projects">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projects</h2>
+  </div>
+
+  <div class="projects-list fade-in">
+
+    <div class="project-row">
+      <div class="project-num">01</div>
+      <div class="project-meta">
+        <span class="project-status s-live">Live — Evaluation</span>
+        <span class="project-name-small">Chat Matrix</span>
+      </div>
+      <div class="project-body">
+        <h3>Chat Matrix — Field Support Platform</h3>
+        <p>An 8-position simultaneous support platform for security installation and service teams. One agent handles 8 field tech sessions on a single screen. Skill-based routing, 3-way escalation, AI auto-assist, and a full analytics dashboard with timer-based quality metrics. Replaced a $61,000/year licensed solution. Currently in live evaluation.</p>
+        <div class="project-tags">
+          <span class="tag">WebSockets</span>
+          <span class="tag">AI Assist</span>
+          <span class="tag">QR Initiation</span>
+          <span class="tag">Quality Analytics</span>
+          <span class="tag">Pi 5</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-num">02</div>
+      <div class="project-meta">
+        <span class="project-status s-proto">Prototype</span>
+        <span class="project-name-small">Sentinel</span>
+      </div>
+      <div class="project-body">
+        <h3>Sentinel — Edge AI Surveillance</h3>
+        <p>A distributed edge AI surveillance module that plugs into existing NVR infrastructure. Runs facial recognition and object detection on-device. Client-managed whitelist and blacklist with silent physical alerts. Nodes communicate across locations — a match at one site propagates awareness across the network in real time.</p>
+        <div class="project-tags">
+          <span class="tag">DeepFace</span>
+          <span class="tag">YOLOv8</span>
+          <span class="tag">RTSP</span>
+          <span class="tag">Mesh Network</span>
+          <span class="tag">Pi 5</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-num">03</div>
+      <div class="project-meta">
+        <span class="project-status s-dev">In Development</span>
+        <span class="project-name-small">SWIM</span>
+      </div>
+      <div class="project-body">
+        <h3>SWIM — Silent Witness Intelligent Monitor</h3>
+        <p>Infrastructure monitoring module for network and power management. Monitors UPS systems and LAN devices, integrates with WattBox for remote power cycling. Auto-starts on brownout for self-healing recovery. Designed to reduce NOC reactive workload by handling routine power and network events automatically.</p>
+        <div class="project-tags">
+          <span class="tag">UPS Monitoring</span>
+          <span class="tag">WattBox</span>
+          <span class="tag">Auto Recovery</span>
+          <span class="tag">LAN Monitor</span>
+          <span class="tag">Pi</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-num">04</div>
+      <div class="project-meta">
+        <span class="project-status s-ready">Ready</span>
+        <span class="project-name-small">Light Draw</span>
+      </div>
+      <div class="project-body">
+        <h3>Light Draw — Security Install CAD</h3>
+        <p>Browser-based CAD tool for security system installations. Load a PDF floor plan and produce a fully marked-up design in 10–15 minutes with zero CAD experience required. Named device placement, view angles, height callouts, auto wire types, wire ledger reporting, duplicate detection, and freehand draw. No software install. No per-seat licensing. Works offline.</p>
+        <div class="project-tags">
+          <span class="tag">Browser Based</span>
+          <span class="tag">Offline</span>
+          <span class="tag">PDF Import</span>
+          <span class="tag">No License Fees</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </div>
+
+    <div class="project-row">
+      <div class="project-num">05</div>
+      <div class="project-meta">
+        <span class="project-status s-ready">Built — Available</span>
+        <span class="project-name-small">ITS Stocks</span>
+      </div>
+      <div class="project-body">
+        <h3>ITS Stocks — Inventory Management Platform</h3>
+        <p>A full stack inventory management system built for field operations. iOS mobile app with QR code scanning for real time stock updates, Firebase backend, admin panel, and automated notification system. Fully built and available for deployment.</p>
+        <div class="project-tags">
+          <span class="tag">iOS</span>
+          <span class="tag">QR Scanning</span>
+          <span class="tag">Firebase</span>
+          <span class="tag">Admin Panel</span>
+          <span class="tag">Auto Notifications</span>
+        </div>
+      </div>
+      <div class="project-arrow">→</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- CONTACT -->
+<div class="section-wrapper" id="contact">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-left fade-in">
+      <p>Whether you're interested in a project, want to discuss a problem worth solving, or are evaluating NorthPoint Innovations for a partnership — reach out directly.</p>
+      <div class="contact-facts">
+        <div class="fact-row">
+          <span class="fact-key">Location</span>
+          <span class="fact-val">Michigan, United States</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Availability</span>
+          <span class="fact-val">Select engagements</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Focus</span>
+          <span class="fact-val">Security / AI / Infrastructure</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-key">Architecture</span>
+          <span class="fact-val">Edge first, no vendor lock</span>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <p style="font-size:1rem; color:var(--ink-light); line-height:1.8;">The best way to reach me is directly by email. I respond to every message personally.</p>
+        <a href="mailto:Greg@northpointinnovations.com" style="display:inline-block; background:var(--ink); color:var(--white); padding:1rem 2rem; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#00c8ff'; this.style.color='#1a1510'" onmouseout="this.style.background='#1a1510'; this.style.color='#faf8f5'">Greg@northpointinnovations.com →</a>
+        <p style="font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--ink-light);">A contact form is coming soon.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">North<em>Point</em> Innovations</div>
+  <div class="footer-copy">© 2026 NorthPoint Innovations — Michigan — Built field-first.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.textContent = "Message received. I'll be in touch shortly.";
+    e.target.reset();
+    setTimeout(() => msg.textContent = '', 5000);
+  }
+</script>
+</body>
+</html>
