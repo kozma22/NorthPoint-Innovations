@@ -12,969 +12,343 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NorthPoint Innovations</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>NorthPoint Innovations | Field-built tools for security pros</title>
+<meta name="description" content="NorthPoint Innovations builds practical tools from real field work: SecDraft security layouts, ReplenRun truck stock tracking, Sentinel Edge AI video, and more. Founded by Greg Kozma, Michigan.">
+<link rel="canonical" href="https://northpointinnovations.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NorthPoint Innovations | Built in the field">
+<meta property="og:description" content="Tools built by a field tech, for the people who work there. SecDraft, ReplenRun, Sentinel Edge, SWIM and more.">
+<meta property="og:url" content="https://northpointinnovations.com/">
+<meta property="og:image" content="https://northpointinnovations.com/img/northpoint-logo.png">
+<meta name="theme-color" content="#12304F">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"NorthPoint Innovations, LLC","url":"https://northpointinnovations.com/","logo":"https://northpointinnovations.com/img/northpoint-logo.png","email":"greg@northpointinnovations.com","founder":{"@type":"Person","name":"Greg Kozma"},"address":{"@type":"PostalAddress","addressRegion":"MI","addressCountry":"US"}}
+</script>
 <style>
-  :root {
-    --bg: #f2ede8;
-    --surface: #ebe5de;
-    --ink: #1a1510;
-    --ink-light: #6b5f54;
-    --accent: #00c8ff;
-    --accent2: #0088cc;
-    --border: #c8bfb5;
-    --white: #faf8f5;
+  :root{
+    --navy:#12304F; --navy-2:#163759; --navy-3:#0F2A44; --navy-line:#2A4A6B;
+    --page:#E9EEF3; --band:#DDE5ED; --card:#FFFFFF; --line:#DCE4EC;
+    --ink:#0F2235; --ink-2:#3D5268; --ink-3:#4A5F75; --ink-4:#5B6F84;
+    --on-navy:#E8EEF4; --on-navy-2:#BFCEDD;
+    --accent:#0070DC; --accent-dark:#005BB5; --accent-on-navy:#6CB4FF;
   }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--page);color:var(--ink);font-family:'Barlow',system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--accent)} a:hover{color:var(--accent-dark)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+  .mono{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+  .display{font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;line-height:1}
+  h2.display{font-size:clamp(40px,5vw,60px)}
+  .btn{display:inline-block;padding:15px 26px;border-radius:6px;font-weight:600;font-size:17px;text-decoration:none;transition:background .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:#fff} .btn-primary:hover{background:var(--accent-dark);color:#fff}
+  .btn-ghost{border:1px solid #5A7A9C;color:var(--on-navy)} .btn-ghost:hover{border-color:var(--on-navy);color:#fff}
+  .chip{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .tag{display:inline-block;align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:3px 9px;border-radius:4px;border:1px solid}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  /* NAV + HERO (navy) */
+  .top{background:var(--navy);color:var(--on-navy)}
+  nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--navy-line)}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-navy)}
+  .brand img{height:38px;width:auto}
+  .brand span{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;letter-spacing:.05em}
+  .brand b{color:var(--accent-on-navy);font-weight:800}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:26px;font-size:16px;font-weight:500}
+  .nav-links a{color:#C9D5E2;text-decoration:none} .nav-links a:hover{color:#fff}
+  .nav-links a.btn{color:#fff;padding:11px 20px}
+  .hero{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding:88px 0 80px}
+  .hero-text{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:26px}
+  .hero-text .mono{color:var(--accent-on-navy)}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(52px,7.4vw,88px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
+  .hero h1 em{font-style:normal;color:var(--accent-on-navy)}
+  .hero p{font-size:21px;color:var(--on-navy-2);max-width:600px}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;padding-top:6px}
+  .hero-logo{flex:1 1 360px;min-width:0;display:flex;justify-content:center}
+  .hero-logo img{width:100%;max-width:460px}
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
+  /* STRIP */
+  .strip{background:var(--band);border-bottom:1px solid var(--line)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;padding-top:28px;padding-bottom:28px}
+  .stat b{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:40px;line-height:1}
+  .stat span{font-size:15px;color:var(--ink-3)}
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 1.2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--bg);
-    border-bottom: 2px solid var(--ink);
-  }
+  section{scroll-margin-top:20px}
+  .sec{padding-top:96px;padding-bottom:32px}
+  .sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:40px}
+  .sec-head > div{display:flex;flex-direction:column;gap:10px}
+  .sec-head p{color:var(--ink-3);max-width:440px;font-size:17px}
 
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    text-transform: uppercase;
-  }
+  /* LIVE CARDS */
+  .cards{display:flex;flex-wrap:wrap;gap:24px}
+  .card{flex:1 1 380px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+  .card-shot{height:260px;background:#E9EFF5;border-bottom:1px solid var(--line);overflow:hidden}
+  .card-shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
+  .card-body{padding:28px;display:flex;flex-direction:column;gap:14px;flex-grow:1}
+  .card-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .card-title h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:34px;text-transform:uppercase}
+  .quote{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:24px;line-height:1.2;color:var(--accent)}
+  .card-body p{color:var(--ink-2);font-size:17px}
+  .card-link{margin-top:auto;padding-top:6px;font-weight:600;text-decoration:none}
+  .chip-live{background:#DCFCE7;color:#166534}
 
-  .nav-logo em {
-    font-style: normal;
-    color: var(--accent);
-  }
+  /* WORKBENCH */
+  .bench{display:flex;flex-wrap:wrap;gap:20px}
+  .bench-card{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .bench-card.wide{flex:1 1 520px}
+  .bench-shot{height:200px;overflow:hidden;background:#0F1A30;border-bottom:1px solid var(--line)}
+  .bench-shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
+  .bench-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex-grow:1}
+  .bench-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;text-transform:uppercase}
+  .bench-body p{color:var(--ink-3);font-size:16px}
+  .tag-proto{color:#B45309;border-color:#B45309}
+  .tag-dev{color:#0A6AA8;border-color:#0A6AA8}
+  .tag-nda{color:#2C435A;border-color:#2C435A}
+  .bench-card.nda{background:#F4F8FB}
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2.5rem;
-    align-items: center;
-  }
+  /* LABS */
+  .lab{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-wrap:wrap}
+  .lab-body{flex:1 1 420px;min-width:0;padding:36px;display:flex;flex-direction:column;gap:14px}
+  .lab-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:38px;text-transform:uppercase}
+  .lab-body p{color:var(--ink-2)}
+  .lab-shot{flex:1 1 380px;min-width:0;min-height:280px;background:#141B33;overflow:hidden}
+  .lab-shot img{width:100%;height:100%;object-fit:cover;object-position:center top}
+  .chip-lab{background:#EDE9FE;color:#5B21B6}
+  .lab-note{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink-4)}
 
-  nav a {
-    color: var(--ink-light);
-    text-decoration: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  nav a:hover { color: var(--accent); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    padding: 8rem 3rem 4rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    border-bottom: 2px solid var(--ink);
-    position: relative;
-  }
-
-  .hero-left {
-    position: relative;
-  }
-
-  .hero-issue {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .hero-issue::before {
-    content: '';
-    width: 40px;
-    height: 2px;
-    background: var(--accent);
-    display: inline-block;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 7vw, 6.5rem);
-    font-weight: 900;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-  }
-
-  .hero h1 .line-accent {
-    color: var(--accent);
-    font-style: italic;
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--ink-light);
-    line-height: 1.8;
-    max-width: 420px;
-    margin-bottom: 2.5rem;
-    border-left: 3px solid var(--accent);
-    padding-left: 1.2rem;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    padding: 0.85rem 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary {
-    background: var(--ink);
-    color: var(--white);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--ink);
-    border: 2px solid var(--ink);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* HERO RIGHT — MASTHEAD */
-  .hero-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 2px solid var(--ink);
-    background: var(--white);
-  }
-
-  .masthead-header {
-    background: var(--ink);
-    color: var(--white);
-    border-bottom: 2px solid var(--accent);
-    padding: 1.2rem 1.5rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .masthead-item {
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .masthead-item:last-child { border-bottom: none; }
-
-  .m-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--ink-light);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-
-  .m-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    text-align: right;
-  }
-
-  .m-value.red { color: var(--accent); }
-  .m-value.blue { color: var(--accent2); }
-
-  /* TICKER */
-  .ticker {
-    background: var(--ink);
-    color: var(--white);
-    padding: 0.6rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .ticker-inner {
-    display: inline-block;
-    animation: ticker 25s linear infinite;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-  }
-
-  @keyframes ticker {
-    from { transform: translateX(100vw); }
-    to { transform: translateX(-100%); }
-  }
-
-  .ticker-sep { color: var(--accent); margin: 0 1.5rem; }
-
-  /* SECTIONS */
-  .section-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 5rem 3rem;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-    border-bottom: 2px solid var(--ink);
-    padding-bottom: 1rem;
-  }
-
-  .section-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900;
-    letter-spacing: -0.01em;
-  }
+  /* PRINCIPLES */
+  .principles{border-top:2px solid var(--accent);padding-top:40px;display:flex;flex-wrap:wrap;gap:40px}
+  .principles h2{flex:1 1 280px;font-size:44px}
+  .principles .grid{flex:3 1 560px;min-width:0;display:flex;flex-wrap:wrap;gap:32px}
+  .principles .grid div{flex:1 1 220px;min-width:0}
+  .principles h3{font-size:19px;font-weight:600;margin-bottom:8px}
+  .principles p{color:var(--ink-3);font-size:16px}
 
   /* ABOUT */
-  .about-cols {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  .about{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding-top:96px;padding-bottom:96px}
+  .about-photo{flex:1 1 320px;min-width:0;max-width:440px}
+  .about-photo img{width:100%;border-radius:12px;aspect-ratio:4/5;object-fit:cover}
+  .about-text{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:20px}
+  .about-text .mono{color:var(--accent)}
+  .about-text h2{font-size:clamp(40px,5vw,56px)}
+  .about-text p{color:var(--ink-2)}
 
-  .about-body p {
-    font-size: 1rem;
-    line-height: 1.9;
-    color: var(--ink-light);
-    margin-bottom: 1.2rem;
-  }
+  /* CONTACT + FOOTER (navy) */
+  .contact{background:var(--navy-2);color:var(--on-navy)}
+  .contact .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;padding-top:88px;padding-bottom:88px;align-items:center;justify-content:space-between}
+  .contact-text{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .contact-text p{color:var(--on-navy-2);max-width:560px}
+  .contact-card{flex:1 1 360px;min-width:0;max-width:460px;background:var(--navy);border:1px solid var(--navy-line);border-radius:12px;padding:32px;display:flex;flex-direction:column;gap:18px}
+  .contact-card .mono{color:var(--accent-on-navy);font-size:13px}
+  .contact-card a.email{color:#fff;font-weight:600;font-size:21px;text-decoration:none;word-break:break-word}
+  .contact-card a.email:hover{color:var(--accent-on-navy)}
+  .contact-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--on-navy-2);font-size:16px}
+  footer{background:var(--navy-3);color:#9FB3C8;font-size:15px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:28px;padding-bottom:28px}
+  footer a{color:#BFCEDD;text-decoration:none} footer a:hover{color:#fff}
+  footer .links{display:flex;flex-wrap:wrap;gap:22px}
 
-  .about-body p strong {
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .about-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 2px solid var(--ink);
-  }
-
-  .sidebar-block {
-    padding: 1.2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .sidebar-block:last-child { border-bottom: none; }
-
-  .sidebar-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--ink-light);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
-  }
-
-  .sidebar-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .sidebar-desc {
-    font-size: 0.8rem;
-    color: var(--ink-light);
-    margin-top: 0.3rem;
-    line-height: 1.5;
-  }
-
-  /* PROJECTS */
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 2px solid var(--ink);
-  }
-
-  .project-row {
-    display: grid;
-    grid-template-columns: 80px 200px 1fr auto;
-    gap: 2rem;
-    align-items: start;
-    padding: 2rem;
-    border-bottom: 1px solid var(--border);
-    background: var(--white);
-    transition: background 0.2s;
-  }
-
-  .project-row:last-child { border-bottom: none; }
-  .project-row:hover { background: var(--surface); }
-
-  .project-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    padding-top: 0.2rem;
-  }
-
-  .project-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-top: 0.3rem;
-  }
-
-  .project-status {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.6rem;
-    display: inline-block;
-    font-weight: 500;
-  }
-
-  .s-live { background: #1a1510; color: #f2ede8; }
-  .s-proto { background: var(--accent2); color: white; }
-  .s-ready { background: var(--accent); color: #1a1510; }
-  .s-dev { background: var(--border); color: var(--ink); }
-
-  .project-name-small {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-  }
-
-  .project-body h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 900;
-    margin-bottom: 0.8rem;
-    letter-spacing: -0.01em;
-  }
-
-  .project-body p {
-    font-size: 0.9rem;
-    color: var(--ink-light);
-    line-height: 1.7;
-    max-width: 580px;
-    margin-bottom: 1rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--ink-light);
-    border: 1px solid var(--border);
-    padding: 0.25rem 0.6rem;
-    letter-spacing: 0.05em;
-  }
-
-  .project-arrow {
-    font-size: 1.5rem;
-    color: var(--border);
-    padding-top: 0.3rem;
-    transition: color 0.2s, transform 0.2s;
-  }
-
-  .project-row:hover .project-arrow {
-    color: var(--accent);
-    transform: translateX(4px);
-  }
-
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-  }
-
-  .contact-left p {
-    font-size: 1rem;
-    color: var(--ink-light);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .contact-facts {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    border: 2px solid var(--ink);
-  }
-
-  .fact-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1.2rem;
-    border-bottom: 1px solid var(--border);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-  }
-
-  .fact-row:last-child { border-bottom: none; }
-  .fact-key { color: var(--ink-light); }
-  .fact-val { color: var(--ink); font-weight: 500; }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .form-group label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: var(--white);
-    border: 2px solid var(--border);
-    border-radius: 0;
-    color: var(--ink);
-    padding: 0.8rem 1rem;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-    appearance: none;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    border-color: var(--ink);
-  }
-
-  .form-group textarea {
-    min-height: 110px;
-    resize: vertical;
-  }
-
-  .form-group select option {
-    background: var(--white);
-  }
-
-  .form-submit {
-    background: var(--ink);
-    color: var(--white);
-    border: none;
-    padding: 1rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-    font-weight: 500;
-  }
-
-  .form-submit:hover { background: var(--accent); }
-
-  .form-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--ink);
-    text-align: center;
-    min-height: 1.2em;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: var(--white);
-    padding: 2rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 900;
-    letter-spacing: 0.05em;
-  }
-
-  .footer-logo em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .footer-copy {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.68rem;
-    color: #6b6055;
-    letter-spacing: 0.05em;
-  }
-
-  /* DIVIDER */
-  .full-divider {
-    width: 100%;
-    height: 2px;
-    background: var(--ink);
-  }
-
-  /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .about-cols { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .project-row { grid-template-columns: 60px 1fr; }
-    .project-meta { display: none; }
-    .project-arrow { display: none; }
-    nav ul { display: none; }
-    .section-wrapper { padding: 3rem 1.5rem; }
+  @media (max-width:640px){
+    .wrap{padding:0 20px}
+    .hero{padding-top:56px;padding-bottom:56px}
+    .sec{padding-top:72px}
+    .nav-links{gap:16px}
+    .card-shot{height:200px}
+    .strip .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .hero-logo img{max-width:280px}
+    .brand span{font-size:19px}
   }
 </style>
-
-<meta name="description" content="Explore NorthPoint Innovations and its projects in security, safety, and practical software.">
-
-<link rel="canonical" href="https://northpointinnovations.com/">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">North<em>Point</em> Innovations</div>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<div class="top">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="brand" href="#top" aria-label="NorthPoint Innovations home">
+        <img src="/img/northpoint-mark.png" alt="" width="60" height="30">
+        <span>NORTH<b>POINT</b> INNOVATIONS</span>
+      </a>
+      <div class="nav-links">
+        <a href="#live">Live tools</a>
+        <a href="#workbench">Workbench</a>
+        <a href="#labs">Labs</a>
+        <a href="#about">About</a>
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+      </div>
+    </nav>
 
-<!-- TICKER -->
-<div class="ticker" style="margin-top:60px;">
-  <div class="ticker-inner">
-    NorthPoint Innovations<span class="ticker-sep">◆</span>
-    Security Systems Integration<span class="ticker-sep">◆</span>
-    Edge AI Surveillance<span class="ticker-sep">◆</span>
-    30 Years Field Experience<span class="ticker-sep">◆</span>
-    Michigan<span class="ticker-sep">◆</span>
-    Built Field-First<span class="ticker-sep">◆</span>
-    No Vendor Lock-in<span class="ticker-sep">◆</span>
-    Real Problems. Real Solutions.<span class="ticker-sep">◆</span>
-    NorthPoint Innovations<span class="ticker-sep">◆</span>
-    Security Systems Integration<span class="ticker-sep">◆</span>
-    Edge AI Surveillance<span class="ticker-sep">◆</span>
-    30 Years Field Experience<span class="ticker-sep">◆</span>
+    <header class="hero" id="top">
+      <div class="hero-text">
+        <span class="mono">NorthPoint Innovations · Michigan</span>
+        <h1>Built in the field.<br><em>For the people</em><br>who work there.</h1>
+        <p>I'm Greg Kozma. Thirty-plus years installing security systems. When something on the job keeps costing techs time, I build the tool that fixes it — and put it to work.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#live">See what's live</a>
+          <a class="btn btn-ghost" href="#workbench">What's on the bench</a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <img src="/img/northpoint-logo.png" alt="NorthPoint Innovations logo: mountains, a north star and a rising arrow" width="720" height="462">
+      </div>
+    </header>
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-issue">NorthPoint Innovations — Michigan</div>
-    <h1>Field<br>Tested.<br><span class="line-accent">Not</span><br>Theoretical.</h1>
-    <p class="hero-sub">30 years in security systems integration. I build practical technology solutions for real operational problems.</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-outline">Get In Touch</a>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="masthead-header">
-      <span>NorthPoint Innovations</span>
-      <span>Portfolio 2025</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Founder</span>
-      <span class="m-value">Greg Kozma</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Experience</span>
-      <span class="m-value red">30+ Years</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Specialty</span>
-      <span class="m-value">Security & AI</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Architecture</span>
-      <span class="m-value blue">Edge First</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Active Projects</span>
-      <span class="m-value red">8</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Vendor Lock-in</span>
-      <span class="m-value">None</span>
-    </div>
-    <div class="masthead-item">
-      <span class="m-label">Location</span>
-      <span class="m-value">Michigan, USA</span>
-    </div>
+<div class="strip">
+  <div class="wrap">
+    <div class="stat"><b>30+</b><span>years in security integration</span></div>
+    <div class="stat"><b>2</b><span>field tools live today</span></div>
+    <div class="stat"><b>4</b><span>more on the workbench</span></div>
+    <div class="stat"><b>1</b><span>experiment in the Labs</span></div>
   </div>
 </div>
 
-<div class="full-divider"></div>
-
-<!-- ABOUT -->
-<div class="section-wrapper" id="about">
-  <div class="section-header fade-in">
-    <span class="section-num">01</span>
-    <h2 class="section-title">About</h2>
+<main>
+<section id="live" class="wrap sec">
+  <div class="sec-head">
+    <div>
+      <span class="mono" style="color:#15803D">● Live now</span>
+      <h2 class="display">Tools you can use today</h2>
+    </div>
+    <p>Each one started as a problem I hit on a job. Try them — free trials, no sales call.</p>
   </div>
-  <div class="about-cols">
-    <div class="about-body fade-in">
-      <p>I'm <strong>Greg Kozma</strong>, founder of NorthPoint Innovations. With over 30 years in security systems integration, I've seen what fails in the field versus what works on paper.</p>
-      <p>Every product I build starts with a <strong>real operational problem</strong> I've personally experienced. Not a market gap identified from a spreadsheet — a problem I lived, understood, and decided to solve.</p>
-      <p>My approach is <strong>edge-first architecture</strong> — processing happens on-device, no unnecessary cloud dependencies, no per-seat licensing, no vendor roadmap controlling your technology. Systems that work the way people actually work.</p>
-      <p>NorthPoint Innovations is the umbrella for everything I build — from AI surveillance infrastructure to field support platforms to CAD tools built specifically for security installers who need to move fast in the field.</p>
-    </div>
-    <div class="about-sidebar fade-in">
-      <div class="sidebar-block">
-        <div class="sidebar-label">Domain</div>
-        <div class="sidebar-value">30+</div>
-        <div class="sidebar-desc">Years in security systems integration</div>
+  <div class="cards">
+    <article class="card">
+      <div class="card-shot"><img src="/img/secdraft.jpg" alt="SecDraft with a floor plan marked up with cameras, motion sensors, a keypad and a device schedule" loading="lazy" width="1200" height="725"></div>
+      <div class="card-body">
+        <div class="card-title"><h3>SecDraft</h3><span class="chip chip-live">Live</span></div>
+        <p class="quote">“Hours in CAD for a 20-camera job.”</p>
+        <p>Load a PDF floor plan and walk out with a fully marked-up design in 10–15 minutes. Device placement, view angles, wire types, a device schedule and a design check. Runs in the browser, works offline, no CAD skills needed.</p>
+        <a class="card-link" href="https://secdraft.com">Try SecDraft →</a>
       </div>
-      <div class="sidebar-block">
-        <div class="sidebar-label">Approach</div>
-        <div class="sidebar-value" style="color:var(--accent2)">Edge</div>
-        <div class="sidebar-desc">On-device processing. No cloud dependency required.</div>
+    </article>
+    <article class="card">
+      <div class="card-shot"><img src="/img/replenrun.jpg" alt="ReplenRun admin dashboard showing users, technicians, parts and the next scheduled stock report" loading="lazy" width="960" height="483"></div>
+      <div class="card-body">
+        <div class="card-title"><h3>ReplenRun</h3><span class="chip chip-live">New</span></div>
+        <p class="quote">“Back to the warehouse for one part. Again.”</p>
+        <p>Tracks every part on every truck against par, then tells the warehouse what each tech needs and what to send back. Each company gets its own branded workspace, and techs sign in with a simple username. Free 14-day trial; tech app with barcode scanning on the way.</p>
+        <a class="card-link" href="https://replenrun.com">Start a free trial →</a>
       </div>
-      <div class="sidebar-block">
-        <div class="sidebar-label">Philosophy</div>
-        <div class="sidebar-value" style="font-size:1rem; color:var(--ink)">Field First</div>
-        <div class="sidebar-desc">Built by someone who has done the work, not just designed around it.</div>
-      </div>
+    </article>
+  </div>
+</section>
+
+<section id="workbench" class="wrap sec">
+  <div class="sec-head">
+    <div>
+      <span class="mono" style="color:#B45309">◆ On the workbench</span>
+      <h2 class="display">What I'm building next</h2>
     </div>
   </div>
-</div>
-
-<div class="full-divider"></div>
-
-<!-- PROJECTS -->
-<div class="section-wrapper" id="projects">
-  <div class="section-header fade-in">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Projects</h2>
-  </div>
-
-  <div class="projects-list fade-in">
-
-    <div class="project-row">
-      <div class="project-num">01</div>
-      <div class="project-meta">
-        <span class="project-status s-live">Live — Evaluation</span>
-        <span class="project-name-small">Chat Matrix</span>
-      </div>
-      <div class="project-body">
-        <h3>Chat Matrix — Field Support Platform</h3>
-        <p>An 8-position simultaneous support platform for security installation and service teams. One agent handles 8 field tech sessions on a single screen. Skill-based routing, 3-way escalation, AI auto-assist, and a full analytics dashboard with timer-based quality metrics. Replaced a $61,000/year licensed solution. Currently in live evaluation.</p>
-        <div class="project-tags">
-          <span class="tag">WebSockets</span>
-          <span class="tag">AI Assist</span>
-          <span class="tag">QR Initiation</span>
-          <span class="tag">Quality Analytics</span>
-          <span class="tag">Pi 5</span>
-        </div>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">02</div>
-      <div class="project-meta">
-        <span class="project-status s-proto">Prototype</span>
-        <span class="project-name-small">Sentinel</span>
-      </div>
-      <div class="project-body">
-        <h3>Sentinel — Edge AI Surveillance</h3>
-        <p>A distributed edge AI surveillance module that plugs into existing NVR infrastructure. Runs facial recognition and object detection on-device. Client-managed whitelist and blacklist with silent physical alerts. Nodes communicate across locations — a match at one site propagates awareness across the network in real time.</p>
-        <div class="project-tags">
-          <span class="tag">DeepFace</span>
-          <span class="tag">YOLOv8</span>
-          <span class="tag">RTSP</span>
-          <span class="tag">Mesh Network</span>
-          <span class="tag">Pi 5</span>
-        </div>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">03</div>
-      <div class="project-meta">
-        <span class="project-status s-dev">In Development</span>
-        <span class="project-name-small">SWIM</span>
-      </div>
-      <div class="project-body">
-        <h3>SWIM — Silent Witness Intelligent Monitor</h3>
-        <p>Infrastructure monitoring module for network and power management. Monitors UPS systems and LAN devices, integrates with WattBox for remote power cycling. Auto-starts on brownout for self-healing recovery. Designed to reduce NOC reactive workload by handling routine power and network events automatically.</p>
-        <div class="project-tags">
-          <span class="tag">UPS Monitoring</span>
-          <span class="tag">WattBox</span>
-          <span class="tag">Auto Recovery</span>
-          <span class="tag">LAN Monitor</span>
-          <span class="tag">Pi</span>
-        </div>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">04</div>
-      <div class="project-meta">
-        <span class="project-status s-ready">Ready</span>
-        <span class="project-name-small">SecDraft</span>
-      </div>
-      <div class="project-body">
-        <h3>SecDraft — Security Layout Tool</h3>
-        <p>Browser-based CAD tool for security system installations. Load a PDF floor plan and produce a fully marked-up design in 10–15 minutes with zero CAD experience required. Named device placement, view angles, height callouts, auto wire types, wire ledger reporting, duplicate detection, and freehand draw. No software install. No per-seat licensing. Works offline.</p>
-        <div class="project-tags">
-          <span class="tag">Browser Based</span>
-          <span class="tag">Offline</span>
-          <span class="tag">PDF Import</span>
-          <span class="tag">No License Fees</span>
-        </div>
-        <a href="https://secdraft.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;color:var(--accent2);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-decoration:none;">Visit SecDraft.com →</a>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">05</div>
-      <div class="project-meta">
-        <span class="project-status s-ready">Live — Early Access</span>
-        <span class="project-name-small">ReplenRun</span>
-      </div>
-      <div class="project-body">
-        <h3>ReplenRun — Truck Stock Tracking for Field Teams</h3>
-        <p>Every truck. Every part. Every move. ReplenRun tracks the parts on every service truck against par levels, then sends a scheduled report telling the warehouse what each tech needs and what they should send back. Each company gets its own branded, fully separate workspace with its own rules, schedule and team logins &mdash; techs can sign in with a simple username, no company email required. Admin panel is live with a free 14-day trial; the tech mobile app with barcode and QR scanning is in development. Built by a field technician who lived the problem.</p>
-        <div class="project-tags">
-          <span class="tag">Truck Inventory</span>
-          <span class="tag">Par Levels</span>
-          <span class="tag">Barcode &amp; QR</span>
-          <span class="tag">White-Label</span>
-          <span class="tag">Scheduled Reports</span>
-        </div>
-        <a href="https://replenrun.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;color:var(--accent2);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-decoration:none;">Visit ReplenRun.com →</a>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">06</div>
-      <div class="project-meta">
-        <span class="project-status s-dev">In Development</span>
-        <span class="project-name-small">CamTool</span>
-      </div>
-      <div class="project-body">
-        <h3>CamTool — Field-First Camera Deployment</h3>
-        <p>CamTool is a Raspberry Pi-based edge platform being developed to simplify professional camera discovery, configuration, network adoption, and deployment. Built from real security installation experience, CamTool is designed to reduce repetitive laptop-based setup work while supporting ONVIF, Hikvision, and Hanwha/Wisenet workflows.</p>
-        <div class="project-tags">
-          <span class="tag">Raspberry Pi</span>
-          <span class="tag">ONVIF</span>
-          <span class="tag">Hikvision</span>
-          <span class="tag">Hanwha</span>
-          <span class="tag">Edge Processing</span>
-        </div>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">07</div>
-      <div class="project-meta">
-        <span class="project-status s-proto">Coming — NDA Only</span>
-        <span class="project-name-small">Stella</span>
-      </div>
-      <div class="project-body">
-        <h3>Stella — Autonomous Rescue Technology</h3>
-        <p>Stella is a NorthPoint Innovations life-safety technology project focused on helping respond to water emergencies. The concept is currently under private development. Technical literature, engineering details, evaluation materials, and partnership discussions are available only under an appropriate nondisclosure agreement.</p>
-        <div class="project-tags">
-          <span class="tag">Life Safety</span>
-          <span class="tag">Rescue Technology</span>
-          <span class="tag">Patent Pending</span>
-          <span class="tag">NDA Required</span>
-        </div>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-    <div class="project-row">
-      <div class="project-num">08</div>
-      <div class="project-meta">
-        <span class="project-status s-live">Live</span>
-        <span class="project-name-small">Powerball Coverage</span>
-      </div>
-      <div class="project-body">
-        <h3>Powerball Coverage — Numbers Analyzer</h3>
-        <p>A live data-driven Powerball numbers analyzer that syncs historical draws and surfaces hot numbers, cold numbers, overdue picks, strategy views, backtesting, favorites, play-sheet generation, and local backup tools. Built as a one-time purchase product with no subscription.</p>
-        <div class="project-tags">
-          <span class="tag">Live Application</span>
-          <span class="tag">Data Analysis</span>
-          <span class="tag">Strategy Tools</span>
-          <span class="tag">One-Time Unlock</span>
-          <span class="tag">Cloudflare</span>
-        </div>
-        <a href="https://powerballcoverage.com/" target="_blank" rel="noopener" style="display:inline-block;margin-top:1rem;color:var(--accent2);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;text-decoration:none;">Visit PowerballCoverage.com →</a>
-      </div>
-      <div class="project-arrow">→</div>
-    </div>
-
-  </div>
-</div>
-
-<div class="full-divider"></div>
-
-<!-- CONTACT -->
-<div class="section-wrapper" id="contact">
-  <div class="section-header fade-in">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Contact</h2>
-  </div>
-  <div class="contact-grid">
-    <div class="contact-left fade-in">
-      <p>Whether you're interested in a project, want to discuss a problem worth solving, or are evaluating NorthPoint Innovations for a partnership — reach out directly.</p>
-      <div class="contact-facts">
-        <div class="fact-row">
-          <span class="fact-key">Location</span>
-          <span class="fact-val">Michigan, United States</span>
-        </div>
-        <div class="fact-row">
-          <span class="fact-key">Availability</span>
-          <span class="fact-val">Select engagements</span>
-        </div>
-        <div class="fact-row">
-          <span class="fact-key">Focus</span>
-          <span class="fact-val">Security / AI / Infrastructure</span>
-        </div>
-        <div class="fact-row">
-          <span class="fact-key">Architecture</span>
-          <span class="fact-val">Edge first, no vendor lock</span>
-        </div>
+  <div class="bench">
+    <div class="bench-card wide">
+      <div class="bench-shot"><img src="/img/sentinel-edge.jpg" alt="Sentinel Edge console recognizing a known face on a live camera feed" loading="lazy" width="1200" height="512"></div>
+      <div class="bench-body">
+        <span class="tag tag-proto">PROTOTYPE</span>
+        <h3>Sentinel Edge</h3>
+        <p>Edge AI that plugs into the cameras and NVR you already have. Recognition runs on-device, and an alert at one site reaches every site.</p>
       </div>
     </div>
-    <div class="fade-in">
-      <div style="display:flex; flex-direction:column; gap:1.5rem;">
-        <p style="font-size:1rem; color:var(--ink-light); line-height:1.8;">The best way to reach me is directly by email. I respond to every message personally.</p>
-        <a href="mailto:Greg@northpointinnovations.com" style="display:inline-block; background:var(--ink); color:var(--white); padding:1rem 2rem; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='#00c8ff'; this.style.color='#1a1510'" onmouseout="this.style.background='#1a1510'; this.style.color='#faf8f5'">Greg@northpointinnovations.com →</a>
-        <p style="font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--ink-light);">A contact form is coming soon.</p>
+    <div class="bench-card wide">
+      <div class="bench-shot"><img src="/img/swim.jpg" alt="SWIM console showing UPS, LAN, internet and email alert status" loading="lazy" width="1200" height="529"></div>
+      <div class="bench-body">
+        <span class="tag tag-dev">IN DEVELOPMENT</span>
+        <h3>SWIM</h3>
+        <p><strong>Silent Witness Intelligence Module.</strong> A small box that watches UPS units and network gear in the cabinet and reports problems before the customer calls.</p>
+      </div>
+    </div>
+    <div class="bench-card">
+      <div class="bench-body">
+        <span class="tag tag-dev">IN DEVELOPMENT</span>
+        <h3>CamTool</h3>
+        <p>Find, configure and adopt cameras without a laptop on a ladder. ONVIF, Hikvision and Hanwha workflows.</p>
+      </div>
+    </div>
+    <div class="bench-card nda">
+      <div class="bench-body">
+        <span class="tag tag-nda">UNDER NDA</span>
+        <h3>Stella</h3>
+        <p>Life-safety technology for water emergencies. Details are shared under NDA only.</p>
+        <a class="card-link" href="mailto:greg@northpointinnovations.com?subject=Stella%20briefing%20request">Request a briefing →</a>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
+<section id="labs" class="wrap sec">
+  <div class="sec-head">
+    <div>
+      <span class="mono" style="color:#6D28D9">◇ NorthPoint Labs</span>
+      <h2 class="display">Experiments that became real sites</h2>
+    </div>
+    <p>Not everything I build lives on a job site. When an idea is too good not to try, it lands here.</p>
+  </div>
+  <article class="lab">
+    <div class="lab-body">
+      <div class="card-title" style="justify-content:flex-start;flex-wrap:wrap"><h3>Powerball Coverage</h3><span class="chip chip-lab">Lab · Live</span></div>
+      <p>Hot, cold and overdue numbers from up to 250 past drawings on one clear board, with ticket sets generated from them. It pulls the draw history, crunches the frequencies and keeps the board current — the same data work behind my field tools, pointed at something fun.</p>
+      <a class="card-link" href="https://powerballcoverage.com">See the board →</a>
+    </div>
+    <div class="lab-shot"><img src="/img/powerball.jpg" alt="Powerball Coverage hot, cold and overdue number charts" loading="lazy" width="1100" height="844"></div>
+  </article>
+  <p class="lab-note">More experiments land here as they ship.</p>
+</section>
+
+<section class="wrap sec">
+  <div class="principles">
+    <h2 class="display">How I build</h2>
+    <div class="grid">
+      <div><h3>Real problems first</h3><p>If I haven't lived it on a job, I don't build it.</p></div>
+      <div><h3>Made for the truck</h3><p>Usable with gloves on, in a basement, with one bar of signal.</p></div>
+      <div><h3>Your data stays yours</h3><p>Export it any time. No hostage-taking.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap about">
+  <div class="about-photo"><img src="/img/greg-kozma.jpg" alt="Greg Kozma at a waterfall overlook" loading="lazy" width="640" height="800"></div>
+  <div class="about-text">
+    <span class="mono">The guy behind it</span>
+    <h2 class="display">A field tech who builds things.</h2>
+    <p>I'm Greg Kozma. Thirty-plus years in security integration taught me hardware, firmware, networking and software the hard way — and taught me what fails in the field versus what works on paper.</p>
+    <p>Most of what I build lives on the job site. Some of it doesn't. Those land in NorthPoint Labs. Either way, it starts with a real problem and ends with something people can actually use.</p>
+  </div>
+</section>
+</main>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-text">
+      <h2 class="display">Got a problem worth solving?</h2>
+      <p>Trying one of the tools, talking partnership or licensing, or a field headache you want gone — I answer every message myself.</p>
+    </div>
+    <div class="contact-card">
+      <span class="mono">Email me directly</span>
+      <a class="email" href="mailto:greg@northpointinnovations.com">greg@northpointinnovations.com</a>
+      <ul>
+        <li>Trying SecDraft or ReplenRun</li>
+        <li>Partnership or licensing</li>
+        <li>A Stella briefing (NDA)</li>
+      </ul>
+      <a class="btn btn-primary" style="align-self:flex-start" href="mailto:greg@northpointinnovations.com">Send an email</a>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-logo">North<em>Point</em> Innovations</div>
-  <div class="footer-copy">© 2026 NorthPoint Innovations — Michigan — Built field-first.</div>
+  <div class="wrap">
+    <span>© 2026 NorthPoint Innovations, LLC · Michigan</span>
+    <span class="links"><a href="https://secdraft.com">SecDraft</a><a href="https://replenrun.com">ReplenRun</a><a href="https://powerballcoverage.com">Powerball Coverage</a></span>
+  </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const msg = document.getElementById('form-msg');
-    msg.textContent = "Message received. I'll be in touch shortly.";
-    e.target.reset();
-    setTimeout(() => msg.textContent = '', 5000);
-  }
-</script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"07e17d74818149c98e3dc767c82f973d","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
