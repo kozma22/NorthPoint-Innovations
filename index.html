@@ -41,7 +41,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--page);color:var(--ink);font-family:'Barlow',system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  img{max-width:100%;display:block}
+  img{max-width:100%;height:auto;display:block}
   a{color:var(--accent)} a:hover{color:var(--accent-dark)}
   .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
   .mono{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
@@ -88,7 +88,7 @@
   /* LIVE CARDS */
   .cards{display:flex;flex-wrap:wrap;gap:24px}
   .card{flex:1 1 380px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
-  .card-shot{height:260px;background:#E9EFF5;border-bottom:1px solid var(--line);overflow:hidden}
+  .card-shot{aspect-ratio:16/9;background:#E9EFF5;border-bottom:1px solid var(--line);overflow:hidden}
   .card-shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
   .card-body{padding:28px;display:flex;flex-direction:column;gap:14px;flex-grow:1}
   .card-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -101,8 +101,8 @@
   /* WORKBENCH */
   .bench{display:flex;flex-wrap:wrap;gap:20px}
   .bench-card{flex:1 1 260px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
-  .bench-card.wide{flex:1 1 520px}
-  .bench-shot{height:200px;overflow:hidden;background:#0F1A30;border-bottom:1px solid var(--line)}
+  .bench-card.wide{flex:1 1 460px;max-width:100%}
+  .bench-shot{aspect-ratio:2.3/1;overflow:hidden;background:#0F1A30;border-bottom:1px solid var(--line)}
   .bench-shot img{width:100%;height:100%;object-fit:cover;object-position:left top}
   .bench-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex-grow:1}
   .bench-body h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;text-transform:uppercase}
@@ -159,7 +159,6 @@
     .hero{padding-top:56px;padding-bottom:56px}
     .sec{padding-top:72px}
     .nav-links{gap:16px}
-    .card-shot{height:200px}
     .strip .wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .hero-logo img{max-width:280px}
     .brand span{font-size:19px}
